@@ -117,13 +117,14 @@
             var battery_str="Bat: 100%";
 
             /* Time */
+            var time_color=DEFAULT_TIME_COLOR;
             var CLOCK_POS=GRect(0, 52, 144, 168);
             var TIME_ALIGN=GTextAlignmentCenter;
             var time_str="22:55";  // FIXME use current time
             var time_font=fonts_get_system_font(FONT_SYSTEM_NAME);
 
             /* Health */
-            var time_color=DEFAULT_TIME_COLOR;
+            var USE_HEALTH=false;
             var HEALTH_POS=GRect(0, 40, 144, 168);
             var HEALTH_ALIGN=GTextAlignmentCenter;
             var health_steps_str="123456 steps today";
@@ -151,7 +152,10 @@
                 }
             }
 
-            graphics_draw_text(ctx, health_steps_str, font_date, HEALTH_POS, 0, HEALTH_ALIGN);
+            if (USE_HEALTH)
+            {
+                graphics_draw_text(ctx, health_steps_str, font_date, HEALTH_POS, 0, HEALTH_ALIGN);
+            }
             graphics_draw_text(ctx, date_str, font_date, DATE_POS, 0, DATE_ALIGN);
             graphics_draw_text(ctx, battery_str, font_bat, BAT_POS, 0, BAT_ALIGN);
             graphics_draw_text(ctx, BLUETOOTH_DISCONNECTED_STR, font_bt, BT_POS, 0, BT_ALIGN);
