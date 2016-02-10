@@ -80,6 +80,9 @@
         var font2 = fonts_get_system_font(FONT_KEY_GOTHIC_18);
         var font3 = fonts_load_custom_font({height: 40, url:"https://github.com/pebble-examples/feature-custom-font/raw/master/resources/fonts/osp-din/OSP-DIN.ttf"});
 
+        var BG_IMAGE=null;
+        //var BG_IMAGE=gbitmap_create('https://raw.githubusercontent.com/clach04/watchface_storm_trooper/vector_opaque/resources/images/storm_trooper.png');
+
         var value = 0;
         rocky.update_proc = function (ctx, bounds) {
             /* text_layer_create(), etc. as of early Feb 2016 not yet implemented */
@@ -125,9 +128,28 @@
             var HEALTH_ALIGN=GTextAlignmentCenter;
             var health_steps_str="123456 steps today";
 
+            /* Bitmap logo */
+            // Stormstrooper https://github.com/clach04/watchface_storm_trooper
+            var IMAGE_RES_X=125;
+            var IMAGE_RES_Y=132;
+            var BG_IMAGE_GRECT=GRect((144 - IMAGE_RES_X) / 2, 0,  IMAGE_RES_X, IMAGE_RES_Y);
+
             graphics_context_set_fill_color(ctx, background_color);
-            graphics_fill_rect(ctx, bounds, 0, GCornerNone);  /* Fill background color, as if text background was set */
+            graphics_fill_rect(ctx, bounds, 0, GCornerNone);  // Fill background color, as if text background was set
             graphics_context_set_text_color(ctx, time_color);
+
+            if (BG_IMAGE !== null)
+            {
+                // this file might not load successfully, draw a placeholder beneath it
+                if (BG_IMAGE.status != 'loaded')
+                {
+                    graphics_draw_rect(ctx, BG_IMAGE_GRECT);
+                }
+                else
+                {
+                    graphics_draw_bitmap_in_rect(ctx, BG_IMAGE, BG_IMAGE_GRECT);
+                }
+            }
 
             graphics_draw_text(ctx, health_steps_str, font_date, HEALTH_POS, 0, HEALTH_ALIGN);
             graphics_draw_text(ctx, date_str, font_date, DATE_POS, 0, DATE_ALIGN);
