@@ -80,48 +80,48 @@
         var font2 = fonts_get_system_font(FONT_KEY_GOTHIC_18);
         var font3 = fonts_load_custom_font({height: 40, url:"https://github.com/pebble-examples/feature-custom-font/raw/master/resources/fonts/osp-din/OSP-DIN.ttf"});
 
-            var FONT_SYSTEM_NAME=FONT_KEY_ROBOTO_BOLD_SUBSET_49;
-            var DEFAULT_BACKGROUND_COLOR=GColorBlack;
-            //var DEFAULT_TIME_COLOR=GColorRed;
-            var DEFAULT_TIME_COLOR=GColorWhite;
-            var background_color=DEFAULT_BACKGROUND_COLOR;
-            /* TODO custom font support */
+        var FONT_SYSTEM_NAME=FONT_KEY_ROBOTO_BOLD_SUBSET_49;
+        var DEFAULT_BACKGROUND_COLOR=GColorBlack;
+        //var DEFAULT_TIME_COLOR=GColorRed;
+        var DEFAULT_TIME_COLOR=GColorWhite;
+        var background_color=DEFAULT_BACKGROUND_COLOR;
+        /* TODO custom font support */
 
-            /* Date */
-            var NO_DATE=false;  // if true, do NOT show date
-            var FONT_DATE_SYSTEM_NAME=FONT_KEY_GOTHIC_18_BOLD;
-            var font_date=fonts_get_system_font(FONT_DATE_SYSTEM_NAME);
-            var DATE_POS=GRect(0, 140, 144, 168);
-            var DATE_ALIGN=GTextAlignmentRight;
-            var date_str="Thu, 20 Aug";  // FIXME use current date
+        /* Date */
+        var NO_DATE=false;  // if true, do NOT show date
+        var FONT_DATE_SYSTEM_NAME=FONT_KEY_GOTHIC_18_BOLD;
+        var font_date=fonts_get_system_font(FONT_DATE_SYSTEM_NAME);
+        var DATE_POS=GRect(0, 140, 144, 168);
+        var DATE_ALIGN=GTextAlignmentRight;
+        var date_str="Thu, 20 Aug";  // FIXME use current date
 
-            /* Bluetooth */
-            var FONT_BT_SYSTEM_NAME=FONT_KEY_GOTHIC_18;
-            var font_bt=fonts_get_system_font(FONT_BT_SYSTEM_NAME);
-            var BT_ALIGN=GTextAlignmentCenter;
-            var BT_POS=GRect(0, 120, 144, 168);
-            var BLUETOOTH_DISCONNECTED_STR="BT Disconnected";
+        /* Bluetooth */
+        var FONT_BT_SYSTEM_NAME=FONT_KEY_GOTHIC_18;
+        var font_bt=fonts_get_system_font(FONT_BT_SYSTEM_NAME);
+        var BT_ALIGN=GTextAlignmentCenter;
+        var BT_POS=GRect(0, 120, 144, 168);
+        var BLUETOOTH_DISCONNECTED_STR="BT Disconnected";
 
-            /* Battery */
-            var NO_BATTERY=false;  // if true, do NOT show battery
-            var FONT_BAT_SYSTEM_NAME=FONT_KEY_GOTHIC_18;
-            var font_bat=fonts_get_system_font(FONT_BAT_SYSTEM_NAME);
-            var BAT_POS=GRect(0, 140, 144, 168);
-            var BAT_ALIGN=GTextAlignmentLeft;
-            var battery_str="Bat: 100%";
+        /* Battery */
+        var NO_BATTERY=false;  // if true, do NOT show battery
+        var FONT_BAT_SYSTEM_NAME=FONT_KEY_GOTHIC_18;
+        var font_bat=fonts_get_system_font(FONT_BAT_SYSTEM_NAME);
+        var BAT_POS=GRect(0, 140, 144, 168);
+        var BAT_ALIGN=GTextAlignmentLeft;
+        var battery_str="Bat: 100%";
 
-            /* Time */
-            var time_color=DEFAULT_TIME_COLOR;
-            var CLOCK_POS=GRect(0, 52, 144, 168);
-            var TIME_ALIGN=GTextAlignmentCenter;
-            var time_str="22:55";  // FIXME use current time
-            var time_font=fonts_get_system_font(FONT_SYSTEM_NAME);
+        /* Time */
+        var time_color=DEFAULT_TIME_COLOR;
+        var CLOCK_POS=GRect(0, 52, 144, 168);
+        var TIME_ALIGN=GTextAlignmentCenter;
+        var time_str="22:55";  // FIXME use current time
+        var time_font=fonts_get_system_font(FONT_SYSTEM_NAME);
 
-            /* Health */
-            var USE_HEALTH=false;
-            var HEALTH_POS=GRect(0, 40, 144, 168);
-            var HEALTH_ALIGN=GTextAlignmentCenter;
-            var health_steps_str="123456 steps today";
+        /* Health */
+        var USE_HEALTH=false;
+        var HEALTH_POS=GRect(0, 40, 144, 168);
+        var HEALTH_ALIGN=GTextAlignmentCenter;
+        var health_steps_str="123456 steps today";
 
         /* Bitmap logo */
         // Stormstrooper https://github.com/clach04/watchface_storm_trooper
