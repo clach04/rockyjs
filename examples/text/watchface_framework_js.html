@@ -96,6 +96,7 @@
             /* TODO custom font support */
 
             /* Date */
+            var NO_DATE=false;  // if true, do NOT show date
             var FONT_DATE_SYSTEM_NAME=FONT_KEY_GOTHIC_18_BOLD;
             var font_date=fonts_get_system_font(FONT_DATE_SYSTEM_NAME);
             var DATE_POS=GRect(0, 140, 144, 168);
@@ -161,7 +162,10 @@
             {
                 graphics_draw_text(ctx, battery_str, font_bat, BAT_POS, 0, BAT_ALIGN);
             }
-            graphics_draw_text(ctx, date_str, font_date, DATE_POS, 0, DATE_ALIGN);
+            if (!NO_DATE)
+            {
+                graphics_draw_text(ctx, date_str, font_date, DATE_POS, 0, DATE_ALIGN);
+            }
             graphics_draw_text(ctx, BLUETOOTH_DISCONNECTED_STR, font_bt, BT_POS, 0, BT_ALIGN);
             graphics_draw_text(ctx, time_str, time_font, CLOCK_POS, 0, TIME_ALIGN);
 
