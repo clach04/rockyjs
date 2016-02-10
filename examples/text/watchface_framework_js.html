@@ -110,6 +110,7 @@
             var BLUETOOTH_DISCONNECTED_STR="BT Disconnected";
 
             /* Battery */
+            var NO_BATTERY=false;  // if true, do NOT show battery
             var FONT_BAT_SYSTEM_NAME=FONT_KEY_GOTHIC_18;
             var font_bat=fonts_get_system_font(FONT_BAT_SYSTEM_NAME);
             var BAT_POS=GRect(0, 140, 144, 168);
@@ -156,10 +157,12 @@
             {
                 graphics_draw_text(ctx, health_steps_str, font_date, HEALTH_POS, 0, HEALTH_ALIGN);
             }
+            if (!NO_BATTERY)
+            {
+                graphics_draw_text(ctx, battery_str, font_bat, BAT_POS, 0, BAT_ALIGN);
+            }
             graphics_draw_text(ctx, date_str, font_date, DATE_POS, 0, DATE_ALIGN);
-            graphics_draw_text(ctx, battery_str, font_bat, BAT_POS, 0, BAT_ALIGN);
             graphics_draw_text(ctx, BLUETOOTH_DISCONNECTED_STR, font_bt, BT_POS, 0, BT_ALIGN);
-
             graphics_draw_text(ctx, time_str, time_font, CLOCK_POS, 0, TIME_ALIGN);
 
         };
