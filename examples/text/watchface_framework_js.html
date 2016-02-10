@@ -69,6 +69,13 @@
 
 <script>
     (function () {
+
+        function _format (str, arr) {
+            return str.replace(/{(\d+)}/g, function (match, number) {
+                return typeof arr[number] != 'undefined' ? arr[number] : match;
+            });
+        };
+
         var rocky = Rocky.bindCanvas(document.getElementById("pebble"));
         // puts all C-symbols from rocky onto window.* so they can be used almost
         // the same way you were using them in C
@@ -136,6 +143,8 @@
 
         var value = 0;
         rocky.update_proc = function (ctx, bounds) {
+            var current_datetime = new Date();
+
             /* text_layer_create(), etc. as of early Feb 2016 not yet implemented */
             /* Rectablge (Basalt)  NOT Round */
 
@@ -165,6 +174,11 @@
             {
                 graphics_draw_text(ctx, battery_str, font_bat, BAT_POS, 0, BAT_ALIGN);
             }
+            
+            // If use real time
+            //time_str = _format('', []);
+            time_str = _format('{0}:{1}', [current_datetime.getHours(), current_datetime.getMinutes()]);
+
             if (!NO_DATE)
             {
                 graphics_draw_text(ctx, date_str, font_date, DATE_POS, 0, DATE_ALIGN);
