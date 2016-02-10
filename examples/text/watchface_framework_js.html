@@ -80,12 +80,21 @@
         var font2 = fonts_get_system_font(FONT_KEY_GOTHIC_18);
         var font3 = fonts_load_custom_font({height: 40, url:"https://github.com/pebble-examples/feature-custom-font/raw/master/resources/fonts/osp-din/OSP-DIN.ttf"});
 
+        /* Font and colors */
         var FONT_SYSTEM_NAME=FONT_KEY_ROBOTO_BOLD_SUBSET_49;
         var DEFAULT_BACKGROUND_COLOR=GColorBlack;
         //var DEFAULT_TIME_COLOR=GColorRed;
         var DEFAULT_TIME_COLOR=GColorWhite;
-        var background_color=DEFAULT_BACKGROUND_COLOR;
         /* TODO custom font support */
+
+        /* Time */
+        var time_color=DEFAULT_TIME_COLOR;
+        var background_color=DEFAULT_BACKGROUND_COLOR;
+
+        var CLOCK_POS=GRect(0, 52, 144, 168);
+        var TIME_ALIGN=GTextAlignmentCenter;
+        var time_str="22:55";  // FIXME use current time
+        var time_font=fonts_get_system_font(FONT_SYSTEM_NAME);
 
         /* Date */
         var NO_DATE=false;  // if true, do NOT show date
@@ -110,12 +119,6 @@
         var BAT_ALIGN=GTextAlignmentLeft;
         var battery_str="Bat: 100%";
 
-        /* Time */
-        var time_color=DEFAULT_TIME_COLOR;
-        var CLOCK_POS=GRect(0, 52, 144, 168);
-        var TIME_ALIGN=GTextAlignmentCenter;
-        var time_str="22:55";  // FIXME use current time
-        var time_font=fonts_get_system_font(FONT_SYSTEM_NAME);
 
         /* Health */
         var USE_HEALTH=false;
