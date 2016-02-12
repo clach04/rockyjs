@@ -177,7 +177,13 @@
             
             // If use real time
             //time_str = _format('', []);
-            time_str = _format('{0}:{1}', [current_datetime.getHours(), current_datetime.getMinutes()]);
+            time_min_str = _format('{0}', [current_datetime.getMinutes()]);
+            if (time_min_str.length == 1)
+            {
+                time_min_str = "0" + time_min_str;
+            }
+            time_str = _format('{0}:{1}', [current_datetime.getHours(), time_min_str]);
+            //time_str = _format('{0}:{1}', [current_datetime.getHours(), current_datetime.getMinutes()]);
 
             if (!NO_DATE)
             {
