@@ -18,6 +18,10 @@
     <script src="../../src/transpiled.js"></script>
     <!-- /build -->
 
+
+    <script src="jquery-1.7.1.min.js"></script>
+    <script src="mustache.min.js"></script>
+
     <!-- build:css ../../css/bootstrap.min.css -->
     <link href="../../html/css/bootstrap.min.css" rel="stylesheet">
     <!-- /build -->
@@ -61,6 +65,51 @@
             Read more about <a href="https://developer.pebble.com/guides/pebble-apps/resources/font-resources/#font-compatibility-note">custom fonts at the developer documentation page</a>.
         </p>
     </div>
+
+<div id="sampleArea"></div>
+
+<!-- 
+# Python template generator
+
+name_list = [
+    'CLOCK_POS',
+    'BT_POS',
+    'DATE_POS',
+    'BAT_POS',
+    'BG_IMAGE_GRECT',
+    'BT_DISCONNECT_IMAGE_GRECT',
+]
+
+
+
+dumb_template = """    #define *name* GRect({{*name*.x}}, {{*name*.y}}, {{*name*.w}}, {{*name*.h}})"""
+for n in name_list:
+    print dumb_template.replace('*name*', n)
+
+print ''
+print ''
+
+dumb_template = """    *name*: *name*,"""
+for n in name_list:
+    print dumb_template.replace('*name*', n)
+
+-->
+
+<script id="template" type="x-tmpl-mustache">
+<pre><code>
+/* watch_config.h */
+#ifndef PBL_ROUND /* I.e. PBL_RECT 144x168 */
+    #define CLOCK_POS GRect({{CLOCK_POS.x}}, {{CLOCK_POS.y}}, {{CLOCK_POS.w}}, {{CLOCK_POS.h}})
+    #define BT_POS GRect({{BT_POS.x}}, {{BT_POS.y}}, {{BT_POS.w}}, {{BT_POS.h}})
+    #define DATE_POS GRect({{DATE_POS.x}}, {{DATE_POS.y}}, {{DATE_POS.w}}, {{DATE_POS.h}})
+    #define BAT_POS GRect({{BAT_POS.x}}, {{BAT_POS.y}}, {{BAT_POS.w}}, {{BAT_POS.h}})
+    #define HEALTH_POS GRect({{HEALTH_POS.x}}, {{HEALTH_POS.y}}, {{HEALTH_POS.w}}, {{HEALTH_POS.h}})
+    #define BG_IMAGE_GRECT GRect({{BG_IMAGE_GRECT.x}}, {{BG_IMAGE_GRECT.y}}, {{BG_IMAGE_GRECT.w}}, {{BG_IMAGE_GRECT.h}})
+    #define BT_DISCONNECT_IMAGE_GRECT GRect({{BT_DISCONNECT_IMAGE_GRECT.x}}, {{BT_DISCONNECT_IMAGE_GRECT.y}}, {{BT_DISCONNECT_IMAGE_GRECT.w}}, {{BT_DISCONNECT_IMAGE_GRECT.h}})
+#endif /* PBL_ROUND  */
+</code></pre>
+</script>
+
     <!-- build:template
     <%= github_banner %>
     /build -->
@@ -140,6 +189,23 @@
         var IMAGE_RES_X=125;
         var IMAGE_RES_Y=132;
         var BG_IMAGE_GRECT=GRect((144 - IMAGE_RES_X) / 2, 0,  IMAGE_RES_X, IMAGE_RES_Y);
+
+
+var template_vars = {
+    CLOCK_POS: CLOCK_POS,
+    BT_POS: BT_POS,
+    DATE_POS: DATE_POS,
+    BAT_POS: BAT_POS,
+    HEALTH_POS: HEALTH_POS,
+    BG_IMAGE_GRECT: BG_IMAGE_GRECT,
+    //BT_DISCONNECT_IMAGE_GRECT: BT_DISCONNECT_IMAGE_GRECT
+	};
+	//var template = "<code>GRect(0, 52, 144, 168) == GRect({{a}}, {{b}}, {{c}}, {{d}})<code>";
+    var template = $('#template').html();
+	var html = Mustache.to_html(template, template_vars);
+	$('#sampleArea').html(html);
+
+
 
         var value = 0;
         rocky.update_proc = function (ctx, bounds) {
