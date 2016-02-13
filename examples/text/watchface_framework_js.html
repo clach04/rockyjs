@@ -126,7 +126,12 @@ for n in name_list:
     #define DATE_ALIGN {{DATE_ALIGN}}
     #define DATE_POS GRect({{DATE_POS.x}}, {{DATE_POS.y}}, {{DATE_POS.w}}, {{DATE_POS.h}})
 
-    #define NO_BATTERY {{NO_BATTERY}}
+    {{#NO_BATTERY}}
+    #define NO_BATTERY
+    {{/NO_BATTERY}}
+    {{^NO_BATTERY}}
+    #undef NO_BATTERY
+    {{/NO_BATTERY}}
     #define FONT_BAT_SYSTEM_NAME {{FONT_BAT_SYSTEM_NAME}}
     #define BAT_ALIGN {{BAT_ALIGN}}
     #define BAT_POS GRect({{BAT_POS.x}}, {{BAT_POS.y}}, {{BAT_POS.w}}, {{BAT_POS.h}})
