@@ -402,6 +402,7 @@ var template_vars = {
             graphics_draw_text(ctx, BLUETOOTH_DISCONNECTED_STR, font_bt, BT_POS, 0, BT_ALIGN);
             graphics_draw_text(ctx, time_str, time_font, CLOCK_POS, 0, TIME_ALIGN);
 
+            // TODO draw "accurate" mask, Aplite/Basalt screen is not a perfect rectangle
         };
 
         setInterval(function () {rocky.mark_dirty();}, 1000);  // Update once per sec
