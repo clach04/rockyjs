@@ -171,6 +171,10 @@ for n in name_list:
 <script>
     (function () {
 
+        /*
+        ** Example:
+        **      time_str = _format('{0}:{1}', [current_datetime.getHours(), current_datetime.getMinutes()]);
+        */
         function _format (str, arr) {
             return str.replace(/{(\d+)}/g, function (match, number) {
                 return typeof arr[number] != 'undefined' ? arr[number] : match;
