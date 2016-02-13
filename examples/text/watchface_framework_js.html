@@ -260,6 +260,31 @@ for n in name_list:
         DATE_POS=GRect(0, 0, 144, 168)
         BAT_POS=GRect(0, 0, 144, 168)
         */
+
+        ///*
+        // CapNion https://github.com/clach04/watchface_CapNion/blob/master/src/watch_config.h
+        // Almost a copy/paste from watch_config.h with #define removed and assignment added
+        BG_IMAGE='https://raw.githubusercontent.com/clach04/watchface_CapNion/master/resources/images/capnion.png';
+        FONT_SYSTEM_NAME=FONT_KEY_BITHAM_42_BOLD
+        BLUETOOTH_DISCONNECTED_STR="No BT"
+        BAT_FMT_STR="Bat:\n%d%%"
+        DATE_FMT_STR="%a\n%d %b"
+
+        BT_ALIGN=GTextAlignmentRight
+        BAT_ALIGN=GTextAlignmentRight
+        TIME_ALIGN=GTextAlignmentRight
+
+        DEFAULT_TIME_COLOR=GColorBlack
+        DEFAULT_BACKGROUND_COLOR=GColorWhite
+
+        var RHS_OFFSET=3
+        CLOCK_POS=GRect(0, -8, 144 - RHS_OFFSET, 168)
+        BT_POS=GRect(0, 40, 144, 168)
+        DATE_POS=GRect(0, 65, 144 - RHS_OFFSET, 168)
+        BAT_POS=GRect(0, 125, 144 - RHS_OFFSET, 168)
+        //*/
+
+
         /* customizations can go here END */
 
         if (BG_IMAGE)
