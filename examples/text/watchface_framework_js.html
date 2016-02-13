@@ -196,19 +196,16 @@ for n in name_list:
         var CLOCK_POS=GRect(0, 52, 144, 168);
         var TIME_ALIGN=GTextAlignmentCenter;
         var time_str="22:55";  // FIXME use current time
-        var time_font=fonts_get_system_font(FONT_SYSTEM_NAME);
 
         /* Date */
         var NO_DATE=false;  // if true, do NOT show date
         var FONT_DATE_SYSTEM_NAME=FONT_KEY_GOTHIC_18_BOLD;
-        var font_date=fonts_get_system_font(FONT_DATE_SYSTEM_NAME);
         var DATE_POS=GRect(0, 140, 144, 168);
         var DATE_ALIGN=GTextAlignmentRight;
         var date_str="Thu, 20 Aug";  // FIXME use current date
 
         /* Bluetooth */
         var FONT_BT_SYSTEM_NAME=FONT_KEY_GOTHIC_18;
-        var font_bt=fonts_get_system_font(FONT_BT_SYSTEM_NAME);
         var BT_ALIGN=GTextAlignmentCenter;
         var BT_POS=GRect(0, 120, 144, 168);
         var BT_DISCONNECT_IMAGE_GRECT=GRect(0, 120, 144, 168);
@@ -217,7 +214,6 @@ for n in name_list:
         /* Battery */
         var NO_BATTERY=false;  // if true, do NOT show battery
         var FONT_BAT_SYSTEM_NAME=FONT_KEY_GOTHIC_18;
-        var font_bat=fonts_get_system_font(FONT_BAT_SYSTEM_NAME);
         var BAT_POS=GRect(0, 140, 144, 168);
         var BAT_ALIGN=GTextAlignmentLeft;
         var battery_str="Bat: 100%";
@@ -230,9 +226,29 @@ for n in name_list:
         var health_steps_str="123456 steps today";
 
         /* Bitmap logo */
-        // Stormstrooper https://github.com/clach04/watchface_storm_trooper
         var BG_IMAGE=null;
-        //var BG_IMAGE='https://raw.githubusercontent.com/clach04/watchface_storm_trooper/vector_opaque/resources/images/storm_trooper.png';
+        var IMAGE_RES_X=125;
+        var IMAGE_RES_Y=132;
+
+        /* customizations can go here START */
+
+        /*
+        // Stormstrooper https://github.com/clach04/watchface_storm_trooper
+        // https://github.com/clach04/watchface_storm_trooper/blob/vector_opaque/src/watch_config.h
+        // Almost a copy/paste from watch_config.h with #define removed and assignment added
+        BG_IMAGE='https://raw.githubusercontent.com/clach04/watchface_storm_trooper/vector_opaque/resources/images/storm_trooper.png';
+
+        BAT_FMT_STR="%d%%"  // FIXME not implement yet
+        DATE_FMT_STR="%a\n%b\n%d"  // FIXME not implement yet
+
+        CLOCK_POS=GRect(0, 118, 144, 168) // bottom of screen for FONT_KEY_ROBOTO_BOLD_SUBSET_49 with one pixel border on bottom
+        BT_DISCONNECT_IMAGE_GRECT=GRect(144 - 20, 168 - (2 * 30 + 4), 20, 30)
+        BT_POS=GRect(0, 120, 144, 168)
+        DATE_POS=GRect(0, 0, 144, 168)
+        BAT_POS=GRect(0, 0, 144, 168)
+        */
+        /* customizations can go here END */
+
         if (BG_IMAGE)
         {
             var background_bitmap=gbitmap_create(BG_IMAGE);
@@ -241,9 +257,11 @@ for n in name_list:
         {
             var background_bitmap=null;
         }
-        var IMAGE_RES_X=125;
-        var IMAGE_RES_Y=132;
         var BG_IMAGE_GRECT=GRect(Math.floor((144 - IMAGE_RES_X) / 2), 0,  IMAGE_RES_X, IMAGE_RES_Y);
+        var time_font=fonts_get_system_font(FONT_SYSTEM_NAME);
+        var font_date=fonts_get_system_font(FONT_DATE_SYSTEM_NAME);
+        var font_bt=fonts_get_system_font(FONT_BT_SYSTEM_NAME);
+        var font_bat=fonts_get_system_font(FONT_BAT_SYSTEM_NAME);
 
 
 var template_vars = {
