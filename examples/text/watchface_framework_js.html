@@ -116,7 +116,12 @@ for n in name_list:
     #define IMAGE_RES_Y {{IMAGE_RES_Y}}
     #define BG_IMAGE_GRECT GRect({{BG_IMAGE_GRECT.x}}, {{BG_IMAGE_GRECT.y}}, {{BG_IMAGE_GRECT.w}}, {{BG_IMAGE_GRECT.h}})
 
-    #define NO_DATE {{NO_DATE}}
+    {{#NO_DATE}}
+    #define NO_DATE
+    {{/NO_DATE}}
+    {{^NO_DATE}}
+    #undef NO_DATE
+    {{/NO_DATE}}
     #define FONT_DATE_SYSTEM_NAME {{FONT_DATE_SYSTEM_NAME}}
     #define DATE_ALIGN {{DATE_ALIGN}}
     #define DATE_POS GRect({{DATE_POS.x}}, {{DATE_POS.y}}, {{DATE_POS.w}}, {{DATE_POS.h}})
