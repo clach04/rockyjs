@@ -144,7 +144,12 @@ for n in name_list:
     #define BT_ALIGN {{BT_ALIGN}}
     #define BLUETOOTH_DISCONNECTED_STR "{{BLUETOOTH_DISCONNECTED_STR}}" // NOTE could use default
 
-    #define USE_HEALTH {{USE_HEALTH}}
+    {{#USE_HEALTH}}
+    #define USE_HEALTH
+    {{/USE_HEALTH}}
+    {{^USE_HEALTH}}
+    #undef USE_HEALTH
+    {{/USE_HEALTH}}
     #define HEALTH_POS GRect({{HEALTH_POS.x}}, {{HEALTH_POS.y}}, {{HEALTH_POS.w}}, {{HEALTH_POS.h}})
     #define HEALTH_ALIGN {{HEALTH_ALIGN}}
 #endif /* PBL_ROUND  */
