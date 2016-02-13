@@ -112,8 +112,10 @@ for n in name_list:
     {{^BG_IMAGE}}
     //#define BG_IMAGE RESOURCE_ID_.....
     {{/BG_IMAGE}}
+    // Setting X and Y to image res allows quick math for centering, etc.
     #define IMAGE_RES_X {{IMAGE_RES_X}}
     #define IMAGE_RES_Y {{IMAGE_RES_Y}}
+    //#define BG_IMAGE_GRECT GRect((144 - IMAGE_RES_X) / 2, 0,  IMAGE_RES_X, IMAGE_RES_Y)  // use same size as image, centered horizontally on screen. On Aplite can determine this at runtime but not Basalt
     #define BG_IMAGE_GRECT GRect({{BG_IMAGE_GRECT.x}}, {{BG_IMAGE_GRECT.y}}, {{BG_IMAGE_GRECT.w}}, {{BG_IMAGE_GRECT.h}})
 
     {{#NO_DATE}}
