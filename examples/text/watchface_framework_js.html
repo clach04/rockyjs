@@ -24,6 +24,8 @@
 
     <script src="https://raw.githubusercontent.com/alexei/sprintf.js/master/dist/sprintf.min.js"></script>
 
+    <script src="https://raw.githubusercontent.com/samsonjs/strftime/master/strftime-min.js"></script>
+
     <!-- build:css ../../css/bootstrap.min.css -->
     <link href="../../html/css/bootstrap.min.css" rel="stylesheet">
     <!-- /build -->
@@ -129,6 +131,7 @@ for n in name_list:
     #define FONT_DATE_SYSTEM_NAME {{FONT_DATE_SYSTEM_NAME}}
     #define DATE_ALIGN {{DATE_ALIGN}}  // FIXME don't use numeric literals, instead use GTextAlignmentCenter, GTextAlignmentLeft, GTextAlignmentRight
     #define DATE_POS GRect({{DATE_POS.x}}, {{DATE_POS.y}}, {{DATE_POS.w}}, {{DATE_POS.h}})
+    #define DATE_FMT_STR "{{DATE_FMT_STR}}"  // NOTE could use default
 
     {{#NO_BATTERY}}
     #define NO_BATTERY
@@ -205,6 +208,7 @@ for n in name_list:
         var FONT_DATE_SYSTEM_NAME=FONT_KEY_GOTHIC_18_BOLD;
         var DATE_POS=GRect(0, 140, 144, 168);
         var DATE_ALIGN=GTextAlignmentRight;
+        var DATE_FMT_STR="%a, %d %b"
         var date_str="Thu, 20 Aug";  // FIXME use current date
 
         /* Bluetooth */
@@ -286,6 +290,7 @@ var template_vars = {
     FONT_DATE_SYSTEM_NAME: FONT_DATE_SYSTEM_NAME,
     DATE_ALIGN: DATE_ALIGN,
     DATE_POS: DATE_POS,
+    DATE_FMT_STR: DATE_FMT_STR,
 
     NO_BATTERY: NO_BATTERY,
     FONT_BAT_SYSTEM_NAME: FONT_BAT_SYSTEM_NAME,
@@ -357,6 +362,7 @@ var template_vars = {
 
             if (!NO_DATE)
             {
+                date_str = strftime(DATE_FMT_STR, current_datetime);
                 graphics_draw_text(ctx, date_str, font_date, DATE_POS, 0, DATE_ALIGN);
             }
             graphics_draw_text(ctx, BLUETOOTH_DISCONNECTED_STR, font_bt, BT_POS, 0, BT_ALIGN);
