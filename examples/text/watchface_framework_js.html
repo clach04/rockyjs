@@ -139,6 +139,7 @@ for n in name_list:
     #define FONT_BAT_SYSTEM_NAME {{FONT_BAT_SYSTEM_NAME}}  // NOTE could use default
     #define BAT_ALIGN {{BAT_ALIGN}}  // FIXME don't use numeric literals, instead use GTextAlignmentCenter, GTextAlignmentLeft, GTextAlignmentRight
     #define BAT_POS GRect({{BAT_POS.x}}, {{BAT_POS.y}}, {{BAT_POS.w}}, {{BAT_POS.h}})
+    #define BAT_FMT_STR "{{BAT_FMT_STR}}"  // NOTE could use default
 
     #define BT_POS GRect({{BT_POS.x}}, {{BT_POS.y}}, {{BT_POS.w}}, {{BT_POS.h}})
     #define BT_DISCONNECT_IMAGE_GRECT GRect({{BT_DISCONNECT_IMAGE_GRECT.x}}, {{BT_DISCONNECT_IMAGE_GRECT.y}}, {{BT_DISCONNECT_IMAGE_GRECT.w}}, {{BT_DISCONNECT_IMAGE_GRECT.h}})
@@ -290,6 +291,7 @@ var template_vars = {
     FONT_BAT_SYSTEM_NAME: FONT_BAT_SYSTEM_NAME,
     BAT_ALIGN: BAT_ALIGN,
     BAT_POS: BAT_POS,
+    BAT_FMT_STR: BAT_FMT_STR,
 
     BT_POS: BT_POS,
     BT_DISCONNECT_IMAGE_GRECT: BT_DISCONNECT_IMAGE_GRECT,
