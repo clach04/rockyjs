@@ -22,6 +22,8 @@
     <script src="jquery-1.7.1.min.js"></script>
     <script src="mustache.min.js"></script>
 
+    <script src="https://raw.githubusercontent.com/alexei/sprintf.js/master/dist/sprintf.min.js"></script>
+
     <!-- build:css ../../css/bootstrap.min.css -->
     <link href="../../html/css/bootstrap.min.css" rel="stylesheet">
     <!-- /build -->
@@ -216,6 +218,8 @@ for n in name_list:
         var FONT_BAT_SYSTEM_NAME=FONT_KEY_GOTHIC_18;
         var BAT_POS=GRect(0, 140, 144, 168);
         var BAT_ALIGN=GTextAlignmentLeft;
+        var battery_level = 100;
+        var BAT_FMT_STR="Bat: %d%%";
         var battery_str="Bat: 100%";
 
 
@@ -335,6 +339,7 @@ var template_vars = {
             }
             if (!NO_BATTERY)
             {
+                battery_str = sprintf(BAT_FMT_STR, battery_level);
                 graphics_draw_text(ctx, battery_str, font_bat, BAT_POS, 0, BAT_ALIGN);
             }
             
