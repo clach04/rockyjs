@@ -100,11 +100,11 @@ for n in name_list:
 /* watch_config.h */
 #ifndef PBL_ROUND /* I.e. PBL_RECT 144x168 */
     #define FONT_SYSTEM_NAME {{FONT_SYSTEM_NAME}}  // NOTE could use default
-    #define DEFAULT_BACKGROUND_COLOR {{DEFAULT_BACKGROUND_COLOR}}  // NOTE could use default
-    #define DEFAULT_TIME_COLOR {{DEFAULT_TIME_COLOR}}  // NOTE could use default
+    #define DEFAULT_BACKGROUND_COLOR {{DEFAULT_BACKGROUND_COLOR}}  // NOTE could use default FIXME don't use numeric literals use GColorBlack, etc.
+    #define DEFAULT_TIME_COLOR {{DEFAULT_TIME_COLOR}}  // NOTE could use default FIXME don't use numeric literals use GColorWhite, etc.
 
     #define CLOCK_POS GRect({{CLOCK_POS.x}}, {{CLOCK_POS.y}}, {{CLOCK_POS.w}}, {{CLOCK_POS.h}})
-    #define TIME_ALIGN {{TIME_ALIGN}}
+    #define TIME_ALIGN {{TIME_ALIGN}}  // FIXME don't use numeric literals, instead use GTextAlignmentCenter, GTextAlignmentLeft, GTextAlignmentRight
 
     {{#BG_IMAGE}}
     #define BG_IMAGE RESOURCE_ID_..... "{{BG_IMAGE}}"
@@ -125,7 +125,7 @@ for n in name_list:
     #undef NO_DATE
     {{/NO_DATE}}
     #define FONT_DATE_SYSTEM_NAME {{FONT_DATE_SYSTEM_NAME}}
-    #define DATE_ALIGN {{DATE_ALIGN}}
+    #define DATE_ALIGN {{DATE_ALIGN}}  // FIXME don't use numeric literals, instead use GTextAlignmentCenter, GTextAlignmentLeft, GTextAlignmentRight
     #define DATE_POS GRect({{DATE_POS.x}}, {{DATE_POS.y}}, {{DATE_POS.w}}, {{DATE_POS.h}})
 
     {{#NO_BATTERY}}
@@ -135,13 +135,13 @@ for n in name_list:
     #undef NO_BATTERY
     {{/NO_BATTERY}}
     #define FONT_BAT_SYSTEM_NAME {{FONT_BAT_SYSTEM_NAME}}  // NOTE could use default
-    #define BAT_ALIGN {{BAT_ALIGN}}
+    #define BAT_ALIGN {{BAT_ALIGN}}  // FIXME don't use numeric literals, instead use GTextAlignmentCenter, GTextAlignmentLeft, GTextAlignmentRight
     #define BAT_POS GRect({{BAT_POS.x}}, {{BAT_POS.y}}, {{BAT_POS.w}}, {{BAT_POS.h}})
 
     #define BT_POS GRect({{BT_POS.x}}, {{BT_POS.y}}, {{BT_POS.w}}, {{BT_POS.h}})
     #define BT_DISCONNECT_IMAGE_GRECT GRect({{BT_DISCONNECT_IMAGE_GRECT.x}}, {{BT_DISCONNECT_IMAGE_GRECT.y}}, {{BT_DISCONNECT_IMAGE_GRECT.w}}, {{BT_DISCONNECT_IMAGE_GRECT.h}})
     #define FONT_BT_SYSTEM_NAME {{FONT_BT_SYSTEM_NAME}}
-    #define BT_ALIGN {{BT_ALIGN}}
+    #define BT_ALIGN {{BT_ALIGN}}  // FIXME don't use numeric literals, instead use GTextAlignmentCenter, GTextAlignmentLeft, GTextAlignmentRight
     #define BLUETOOTH_DISCONNECTED_STR "{{BLUETOOTH_DISCONNECTED_STR}}" // NOTE could use default
 
     {{#USE_HEALTH}}
@@ -151,7 +151,7 @@ for n in name_list:
     #undef USE_HEALTH
     {{/USE_HEALTH}}
     #define HEALTH_POS GRect({{HEALTH_POS.x}}, {{HEALTH_POS.y}}, {{HEALTH_POS.w}}, {{HEALTH_POS.h}})
-    #define HEALTH_ALIGN {{HEALTH_ALIGN}}
+    #define HEALTH_ALIGN {{HEALTH_ALIGN}}  // FIXME don't use numeric literals, instead use GTextAlignmentCenter, GTextAlignmentLeft, GTextAlignmentRight
 #endif /* PBL_ROUND  */
 </code></pre>
 </script>
