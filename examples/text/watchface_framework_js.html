@@ -99,9 +99,9 @@ for n in name_list:
 <pre><code>
 /* watch_config.h */
 #ifndef PBL_ROUND /* I.e. PBL_RECT 144x168 */
-    #define FONT_SYSTEM_NAME {{FONT_SYSTEM_NAME}}
-    #define DEFAULT_BACKGROUND_COLOR {{DEFAULT_BACKGROUND_COLOR}}
-    #define DEFAULT_TIME_COLOR {{DEFAULT_TIME_COLOR}}
+    #define FONT_SYSTEM_NAME {{FONT_SYSTEM_NAME}}  // NOTE could use default
+    #define DEFAULT_BACKGROUND_COLOR {{DEFAULT_BACKGROUND_COLOR}}  // NOTE could use default
+    #define DEFAULT_TIME_COLOR {{DEFAULT_TIME_COLOR}}  // NOTE could use default
 
     #define CLOCK_POS GRect({{CLOCK_POS.x}}, {{CLOCK_POS.y}}, {{CLOCK_POS.w}}, {{CLOCK_POS.h}})
     #define TIME_ALIGN {{TIME_ALIGN}}
@@ -132,7 +132,7 @@ for n in name_list:
     {{^NO_BATTERY}}
     #undef NO_BATTERY
     {{/NO_BATTERY}}
-    #define FONT_BAT_SYSTEM_NAME {{FONT_BAT_SYSTEM_NAME}}
+    #define FONT_BAT_SYSTEM_NAME {{FONT_BAT_SYSTEM_NAME}}  // NOTE could use default
     #define BAT_ALIGN {{BAT_ALIGN}}
     #define BAT_POS GRect({{BAT_POS.x}}, {{BAT_POS.y}}, {{BAT_POS.w}}, {{BAT_POS.h}})
 
@@ -140,7 +140,7 @@ for n in name_list:
     #define BT_DISCONNECT_IMAGE_GRECT GRect({{BT_DISCONNECT_IMAGE_GRECT.x}}, {{BT_DISCONNECT_IMAGE_GRECT.y}}, {{BT_DISCONNECT_IMAGE_GRECT.w}}, {{BT_DISCONNECT_IMAGE_GRECT.h}})
     #define FONT_BT_SYSTEM_NAME {{FONT_BT_SYSTEM_NAME}}
     #define BT_ALIGN {{BT_ALIGN}}
-    #define BLUETOOTH_DISCONNECTED_STR {{BLUETOOTH_DISCONNECTED_STR}}
+    #define BLUETOOTH_DISCONNECTED_STR "{{BLUETOOTH_DISCONNECTED_STR}}" // NOTE could use default
 
     #define USE_HEALTH {{USE_HEALTH}}
     #define HEALTH_POS GRect({{HEALTH_POS.x}}, {{HEALTH_POS.y}}, {{HEALTH_POS.w}}, {{HEALTH_POS.h}})
