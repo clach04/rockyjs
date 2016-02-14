@@ -76,32 +76,81 @@
 # Python template generator
 
 name_list = [
+    'FONT_SYSTEM_NAME',
+    'FONT_NAME',
+    'DEFAULT_BACKGROUND_COLOR',
+    'DEFAULT_TIME_COLOR',
+    '',
+
     'CLOCK_POS',
-    'BT_POS',
-    'DATE_POS',
-    'BAT_POS',
+    'TIME_ALIGN',
+    '',
+
+    'BG_IMAGE',
+    'IMAGE_RES_X',
+    'IMAGE_RES_Y',
     'BG_IMAGE_GRECT',
+    '',
+
+    'NO_DATE',
+    'FONT_DATE_SYSTEM_NAME',
+    'DATE_ALIGN',
+    'DATE_POS',
+    'DATE_FMT_STR',
+    '',
+
+    'NO_BATTERY',
+    'FONT_BAT_SYSTEM_NAME',
+    'BAT_ALIGN',
+    'BAT_POS',
+    'BAT_FMT_STR',
+    '',
+
+    'BT_POS',
     'BT_DISCONNECT_IMAGE_GRECT',
+    'FONT_BT_SYSTEM_NAME',
+    'BT_ALIGN',
+    'BLUETOOTH_DISCONNECTED_STR',
+    '',
+
+    'USE_HEALTH',
+    'HEALTH_POS',
+    'HEALTH_ALIGN',
+    '',
 ]
 
 
-
-dumb_template = """    #define *name* GRect({{*name*.x}}, {{*name*.y}}, {{*name*.w}}, {{*name*.h}})"""
+# template setup
+dumb_template_pos = """    #define *name* GRect({{*name*.x}}, {{*name*.y}}, {{*name*.w}}, {{*name*.h}})"""
+dumb_template_def = """    #define *name* {{*name*}}"""
 for n in name_list:
-    print dumb_template.replace('*name*', n)
+    if not n:
+        print ''
+    else:
+        if 'POS' in n or 'RECT' in n:
+            print dumb_template_pos.replace('*name*', n)
+        else:
+            print dumb_template_def.replace('*name*', n)
 
 print ''
 print ''
 
+# dict setup
 dumb_template = """    *name*: *name*,"""
 for n in name_list:
-    print dumb_template.replace('*name*', n)
+    if not n:
+        print ''
+    else:
+        print dumb_template.replace('*name*', n)
+
 
 -->
 
+<!--  TODO syntax highlighting? -->
 <script id="template" type="x-tmpl-mustache">
 <pre><code>
-/* watch_config.h */
+/* watch_config.h suitable for use with https://github.com/clach04/watchface_framework/ */
+
 #ifndef PBL_ROUND /* I.e. PBL_RECT 144x168 */
     #define FONT_SYSTEM_NAME {{FONT_SYSTEM_NAME}}  // NOTE could use default
     #define FONT_NAME RESOURCE_ID_FONT_...._{{FONT_SIZE}}  // {{FONT_NAME}}
