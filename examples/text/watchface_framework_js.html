@@ -436,7 +436,24 @@ var template_vars = {
             graphics_draw_text(ctx, BLUETOOTH_DISCONNECTED_STR, font_bt, BT_POS, 0, BT_ALIGN);
             graphics_draw_text(ctx, time_str, time_font, CLOCK_POS, 0, TIME_ALIGN);
 
-            // TODO draw "accurate" mask, Aplite/Basalt screen is not a perfect rectangle
+            // draw mask, Aplite/Basalt screen is not a perfect rectangle due to bevel/surround
+            // Based on C code from https://www.reddit.com/r/pebbledevelopers/comments/3pwsuv/function_to_cut_the_corners_corners_off_in_the/
+            {
+                var width = 4;
+                var inc = 2;
+                graphics_context_set_stroke_color(ctx, GColorWhite);     // Corner Color
+                for(var y = 0; y < 6; ++y)
+                {
+                    for(var x = 0; x < (width / 4); ++x)
+                    {
+                        graphics_draw_pixel(ctx, GPoint(      x,   5 - y));  //  Upper Left  Corner
+                        graphics_draw_pixel(ctx, GPoint(      x, 162 + y));  // Bottom Left  Corner
+                        graphics_draw_pixel(ctx, GPoint(143 - x,   5 - y));  //  Upper Right Corner
+                        graphics_draw_pixel(ctx, GPoint(143 - x, 162 + y));  // Bottom Right Corner
+                    }
+                    width += inc++;
+                }
+            }
         };
 
         setInterval(function () {rocky.mark_dirty();}, 1000);  // Update once per sec
