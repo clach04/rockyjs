@@ -104,6 +104,7 @@ for n in name_list:
 /* watch_config.h */
 #ifndef PBL_ROUND /* I.e. PBL_RECT 144x168 */
     #define FONT_SYSTEM_NAME {{FONT_SYSTEM_NAME}}  // NOTE could use default
+    #define FONT_NAME RESOURCE_ID_FONT_...._{{FONT_SIZE}}  // {{FONT_NAME}}
     #define DEFAULT_BACKGROUND_COLOR {{DEFAULT_BACKGROUND_COLOR}}  // NOTE could use default FIXME don't use numeric literals use GColorBlack, etc.
     #define DEFAULT_TIME_COLOR {{DEFAULT_TIME_COLOR}}  // NOTE could use default FIXME don't use numeric literals use GColorWhite, etc.
 
@@ -194,6 +195,8 @@ for n in name_list:
 
         /* Font and colors */
         var FONT_SYSTEM_NAME=FONT_KEY_ROBOTO_BOLD_SUBSET_49;
+        var FONT_NAME=null;
+        var FONT_SIZE=40;
         var DEFAULT_BACKGROUND_COLOR=GColorBlack;
         //var DEFAULT_TIME_COLOR=GColorRed;
         var DEFAULT_TIME_COLOR=GColorWhite;
@@ -285,11 +288,12 @@ for n in name_list:
         BAT_POS=GRect(0, 125, 144 - RHS_OFFSET, 168)
         */
 
-        // JupiterMassZen
+        // JupiterMassXen
         // https://github.com/clach04/watchface_JupiterMass/blob/master/src/watch_config.h
 
         BG_IMAGE='https://raw.githubusercontent.com/clach04/watchface_JupiterMass/master/resources/images/n7logo~color.png'
-        //FONT_NAME=RESOURCE_ID_FONT_JUPITER_ALPHABOT_XEN_75
+        FONT_NAME='https://github.com/clach04/watchface_JupiterMass/raw/master/resources/fonts/ISL_Jupiter_Alphabot_Xen.ttf'
+        FONT_SIZE=50 // Should be 75 - see https://github.com/pebble/rockyjs/issues/72
         CLOCK_POS=GRect(0, 40, 144, 168)
         BT_POS=GRect(0, 120, 144, 168)
         DATE_POS=GRect(0, 140, 144, 168)
@@ -308,7 +312,18 @@ for n in name_list:
         {
             var background_bitmap=null;
         }
-        var time_font=fonts_get_system_font(FONT_SYSTEM_NAME);
+        if (FONT_NAME)
+        {
+            if (FONT_SIZE > 50)
+            {
+                alert('FONT_SIZE ' + FONT_SIZE.toString() + ' maybe too large, see https://github.com/pebble/rockyjs/issues/72');
+            }
+            var time_font=fonts_load_custom_font({height: FONT_SIZE, url:FONT_NAME});
+        }
+        else
+        {
+            var time_font=fonts_get_system_font(FONT_SYSTEM_NAME);
+        }
         var font_date=fonts_get_system_font(FONT_DATE_SYSTEM_NAME);
         var font_bt=fonts_get_system_font(FONT_BT_SYSTEM_NAME);
         var font_bat=fonts_get_system_font(FONT_BAT_SYSTEM_NAME);
@@ -316,6 +331,8 @@ for n in name_list:
 
 var template_vars = {
     FONT_SYSTEM_NAME: FONT_SYSTEM_NAME,
+    FONT_NAME: FONT_NAME,
+    FONT_SIZE: FONT_SIZE,
     DEFAULT_BACKGROUND_COLOR: DEFAULT_BACKGROUND_COLOR,
     DEFAULT_TIME_COLOR: DEFAULT_TIME_COLOR,
 
