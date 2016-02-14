@@ -26,6 +26,11 @@
 
     <script src="https://raw.githubusercontent.com/samsonjs/strftime/master/strftime-min.js"></script>
 
+    <link rel="stylesheet" href="https://highlightjs.org/static/demo/style.css">
+    <link rel="stylesheet" title="Default" href="https://highlightjs.org/static/demo/styles/default.css">
+    <script src="https://highlightjs.org/static/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
     <!-- build:css ../../css/bootstrap.min.css -->
     <link href="../../html/css/bootstrap.min.css" rel="stylesheet">
     <!-- /build -->
@@ -148,7 +153,7 @@ for n in name_list:
 
 <!--  TODO syntax highlighting? -->
 <script id="template" type="x-tmpl-mustache">
-<pre><code>
+<pre><code class="cpp">
 /* watch_config.h suitable for use with https://github.com/clach04/watchface_framework/ */
 
 #ifndef PBL_ROUND /* I.e. PBL_RECT 144x168 */
@@ -427,7 +432,6 @@ var template_vars = {
     var template = $('#template').html();
 	var html = Mustache.to_html(template, template_vars);
 	$('#sampleArea').html(html);
-
 
 
         var value = 0;
