@@ -109,6 +109,8 @@ name_list = [
     'BAT_ALIGN',
     'BAT_POS',
     'BAT_FMT_STR',
+    'DRAW_BATTERY',
+    'DRAW_SMALL_BATTERY',
     '',
 
     'BT_POS',
@@ -198,6 +200,18 @@ for n in name_list:
     #define BAT_ALIGN {{BAT_ALIGN}}  // FIXME don't use numeric literals, instead use GTextAlignmentCenter, GTextAlignmentLeft, GTextAlignmentRight
     #define BAT_POS GRect({{BAT_POS.x}}, {{BAT_POS.y}}, {{BAT_POS.w}}, {{BAT_POS.h}})
     #define BAT_FMT_STR "{{BAT_FMT_STR}}"  // NOTE could use default
+    {{#DRAW_BATTERY}}
+    #define DRAW_BATTERY
+    {{/DRAW_BATTERY}}
+    {{^DRAW_BATTERY}}
+    #undef DRAW_BATTERY
+    {{/DRAW_BATTERY}}
+    {{#DRAW_SMALL_BATTERY}}
+    #define DRAW_SMALL_BATTERY
+    {{/DRAW_SMALL_BATTERY}}
+    {{^DRAW_SMALL_BATTERY}}
+    #undef DRAW_SMALL_BATTERY
+    {{/DRAW_SMALL_BATTERY}}
 
     #define BT_POS GRect({{BT_POS.x}}, {{BT_POS.y}}, {{BT_POS.w}}, {{BT_POS.h}})
     #define BT_DISCONNECT_IMAGE_GRECT GRect({{BT_DISCONNECT_IMAGE_GRECT.x}}, {{BT_DISCONNECT_IMAGE_GRECT.y}}, {{BT_DISCONNECT_IMAGE_GRECT.w}}, {{BT_DISCONNECT_IMAGE_GRECT.h}})
@@ -284,6 +298,8 @@ for n in name_list:
         var battery_level = 100;
         var BAT_FMT_STR="Bat: %d%%";
         var battery_str="Bat: 100%";
+        var DRAW_BATTERY=true;
+        var DRAW_SMALL_BATTERY=false;
 
 
         /* Health */
@@ -352,6 +368,7 @@ for n in name_list:
         BT_POS=GRect(0, 120, 144, 168)
         DATE_POS=GRect(0, 140, 144, 168)
         BAT_POS=GRect(0, 140, 144, 168)
+        BAT_POS=GRect(5, 150, 144, 168)
 
         /* customizations can go here END */
 
@@ -417,6 +434,8 @@ var template_vars = {
     BAT_ALIGN: BAT_ALIGN,
     BAT_POS: BAT_POS,
     BAT_FMT_STR: BAT_FMT_STR,
+    DRAW_BATTERY: DRAW_BATTERY,
+    DRAW_SMALL_BATTERY: DRAW_SMALL_BATTERY,
 
     BT_POS: BT_POS,
     BT_DISCONNECT_IMAGE_GRECT: BT_DISCONNECT_IMAGE_GRECT,
@@ -465,8 +484,51 @@ var template_vars = {
             }
             if (!NO_BATTERY)
             {
-                battery_str = sprintf(BAT_FMT_STR, battery_level);
-                graphics_draw_text(ctx, battery_str, font_bat, BAT_POS, 0, BAT_ALIGN);
+                if (!DRAW_BATTERY)
+                {
+                    /* text */
+                    battery_str = sprintf(BAT_FMT_STR, battery_level);
+                    graphics_draw_text(ctx, battery_str, font_bat, BAT_POS, 0, BAT_ALIGN);
+                }
+                else
+                {
+                    /* gfx */
+                    battery_level = 100;
+                    //battery_level = 20;
+                    //battery_level = 10;
+                    pos_y = pos_x = 100;
+                    pos_y = BAT_POS.y;
+                    pos_x = BAT_POS.x;
+                    colour = GColorGreen;
+                    colour = GColorWhite;
+                    graphics_context_set_fill_color(ctx, colour);
+                    graphics_context_set_stroke_color(ctx, colour);
+
+                    if (DRAW_SMALL_BATTERY)
+                    {
+                        battery_path_info = gpath_create([[0,6],[0,0],[10,0],[10,2],[11,2],[11,4],[10,4],[10,6],[0,6],[1,5],[9,5],[9,1],[1,1],[1,5]]);
+                    }
+                    else
+                    {
+                        battery_path_info = gpath_create([[0,10],[0,0],[20,0],[20,4],[22,4],[22,8],[20,8],[20,12],[0,12],[0,10],[2,10],[18,10],[18,2],[2,2],[2,10]]);
+                    }
+                    gpath_move_to(battery_path_info, [pos_x, pos_y]);
+                    gpath_draw_outline(ctx, battery_path_info);
+                    gpath_draw_filled(ctx, battery_path_info);
+                    //gpath_draw_outline_open(ctx, battery_path_info);
+
+                    // Debug
+                    //colour = GColorRed; graphics_context_set_fill_color(ctx, colour); graphics_context_set_stroke_color(ctx, colour);
+
+                    if (DRAW_SMALL_BATTERY)
+                    {
+                        graphics_fill_rect(ctx, GRect(pos_x + 2, pos_y + 2, Math.floor(battery_level * 7 / 100), 3), 0, 0);
+                    }
+                    else
+                    {
+                        graphics_fill_rect(ctx, GRect(pos_x + 3, pos_y + 3, Math.floor(battery_level * 15 / 100), 7), 0, 0);
+                    }
+                }
             }
             
             // If use real time
