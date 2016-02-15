@@ -316,7 +316,7 @@ for n in name_list:
 
         /* customizations can go here START */
 
-        /*
+        ///*
         // Stormstrooper https://github.com/clach04/watchface_storm_trooper
         // https://github.com/clach04/watchface_storm_trooper/blob/vector_opaque/src/watch_config.h
         // Almost a copy/paste from watch_config.h with #define removed and assignment added
@@ -332,8 +332,11 @@ for n in name_list:
         BT_DISCONNECT_IMAGE_GRECT=GRect(144 - 20, 168 - (2 * 30 + 4), 20, 30)
         BT_POS=GRect(0, 120, 144, 168)
         DATE_POS=GRect(0, 0, 144, 168)
+
+        DRAW_BATTERY=false;
+        DRAW_SMALL_BATTERY=false;
         BAT_POS=GRect(0, 0, 144, 168)
-        */
+        //*/
 
         /*
         // CapNion https://github.com/clach04/watchface_CapNion/blob/master/src/watch_config.h
@@ -358,9 +361,9 @@ for n in name_list:
         BAT_POS=GRect(0, 125, 144 - RHS_OFFSET, 168)
         */
 
+        /*
         // JupiterMassXen
         // https://github.com/clach04/watchface_JupiterMass/blob/master/src/watch_config.h
-
         BG_IMAGE='https://raw.githubusercontent.com/clach04/watchface_JupiterMass/master/resources/images/n7logo~color.png'
         FONT_NAME='https://github.com/clach04/watchface_JupiterMass/raw/master/resources/fonts/ISL_Jupiter_Alphabot_Xen.ttf'
         FONT_SIZE=50 // Should be 75 - see https://github.com/pebble/rockyjs/issues/72
@@ -369,7 +372,7 @@ for n in name_list:
         DATE_POS=GRect(0, 140, 144, 168)
         BAT_POS=GRect(0, 140, 144, 168)
         BAT_POS=GRect(5, 150, 144, 168)
-
+        */
         /* customizations can go here END */
 
         var time_color=DEFAULT_TIME_COLOR;
