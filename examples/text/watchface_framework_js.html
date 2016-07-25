@@ -390,22 +390,22 @@ for n in name_list:
         BG_IMAGE='https://raw.githubusercontent.com/clach04/watchface_storm_trooper/vector_opaque/resources/images/storm_trooper.png';
         IMAGE_RES_X=125
         IMAGE_RES_Y=132
-        BG_IMAGE_GRECT=GRect(Math.floor((144 - IMAGE_RES_X) / 2), 0,  IMAGE_RES_X, IMAGE_RES_Y)
+        BG_IMAGE_GRECT=GRect(Math.floor((144 - IMAGE_RES_X) / 2), 35,  IMAGE_RES_X, IMAGE_RES_Y)
 
         BAT_FMT_STR="%d%%"
         DATE_FMT_STR="%a\n%b\n%d"
 
-        CLOCK_POS=GRect(0, 118, 144, 168) // bottom of screen for FONT_KEY_ROBOTO_BOLD_SUBSET_49 with one pixel border on bottom
+        CLOCK_POS=GRect(0, -15, 144, 168) // bottom of screen for FONT_KEY_ROBOTO_BOLD_SUBSET_49 with one pixel border on bottom
         BT_DISCONNECT_IMAGE_GRECT=GRect(144 - 20, 168 - (2 * 30 + 4), 20, 30)
         BT_POS=GRect(0, 120, 144, 168)
-        DATE_POS=GRect(0, 0, 144, 168)
+        DATE_POS=GRect(0, 35, 144, 168)
 
         DRAW_BATTERY=false;
         DRAW_SMALL_BATTERY=false;
         BAT_POS=GRect(0, 0, 144, 168)
         DRAW_BATTERY=true;
         DRAW_SMALL_BATTERY=false;
-        BAT_POS=GRect(5, 5, 144, 168)
+        BAT_POS=GRect(5, 40, 144, 168)
         //*/
 
         /*
