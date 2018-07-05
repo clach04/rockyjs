@@ -22,9 +22,10 @@
     <script src="jquery-1.7.1.min.js"></script>
     <script src="mustache.min.js"></script>
 
-    <script src="https://raw.githubusercontent.com/alexei/sprintf.js/master/dist/sprintf.min.js"></script>
-
-    <script src="https://raw.githubusercontent.com/samsonjs/strftime/master/strftime-min.js"></script>
+    <!-- From https://raw.githubusercontent.com/alexei/sprintf.js/master/dist/sprintf.min.js -- now must use gitraw or local copies -->
+    <script src="sprintf.min.js"></script>
+    <!-- From https://raw.githubusercontent.com/samsonjs/strftime/master/strftime-min.js -->
+    <script src="strftime-min.js"></script>
 
     <link rel="stylesheet" href="https://highlightjs.org/static/demo/style.css">
     <link rel="stylesheet" title="Default" href="https://highlightjs.org/static/demo/styles/default.css">
@@ -326,7 +327,7 @@ for n in name_list:
         var fontData = atob("AxCNAK8l/wIKAQAAAAABAAAAAgAAAAMAAAAEAAAABQAAAAYAAAAHAAAACAAAAAkAAAAKAAAACwAAAAwAAAANAAAADgAAAA8AAAAQAAAAEQAAABIAAAATAAAAFAAAABUAAAAWAAAAFwAAABgAAAAZAAAAGgAAABsAAAAcAAAAHQAAAB4AAAAfAAAAIAEAACEBBAAiAQgAIwAMACQADAAlAQwAJgAQACcBEAAoARQAKQEYACoAHAArARwALAEgAC0BJAAuASgALwEsADABMAAxATQAMgE4ADMBPAA0AUAANQFEADYBSAA3AUwAOAFQADkBVAA6AVgAOwFcADwBYAA9AWQAPgFoAD8BbABAAXAAQQF0AEIBeABDAXwARAGAAEUBhABGAYgARwGMAEgBkABJAZQASgGYAEsBnABMAaAATQGkAE4BqABPAawAUAGwAFEBtABSAbgAUwK8AFQCxABVAcwAVgHQAFcB1ABYAdgAWQHcAFoB4ABbAeQAXAHoAF0B7ABeAfAAXwD0AGAB9ABhAfgAYgH8AGMBAAFkAQQBZQEIAWYBDAFnARABaAEUAWkBGAFqARwBawEgAWwBJAFtASgBbgEsAW8BMAFwATQBcQE4AXIBPAFzAUABdAFEAXUBSAF2AUwBdwFQAXgBVAF5AVgBegFcAXsBYAF8AWQBfQFoAX4BbAF/AHABgABwAYEAcAGCAHABgwBwAYQAcAGFAHABhgBwAYcAcAGIAHABiQBwAYoAcAGLAHABjABwAY0AcAGOAHABjwBwAZAAcAGRAHABkgBwAZMAcAGUAHABlQBwAZYAcAGXAHABmABwAZkAcAGaAHABmwBwAZwAcAGdAHABngBwAZ8AcAGgAHABoQFwAaIAdAGjAHQBpAB0AaUAdAGmAHQBpwB0AagAdAGpAHQBqgB0AasBdAGsAHgBrQB4Aa4AeAGvAHgBsAB4AbEAeAGyAHgBswB4AbQAeAG1AHgBtgB4AbcAeAG4AXgBuQB8AboAfAG7AXwBvACAAb0AgAG+AIABvwGAAcABhAHBAYgBwgGMAcMAkAHEAZABxQCUAcYBlAHHAJgByAGYAckBnAHKAaABywGkAcwBqAHNAawBzgGwAc8BtAHQALgB0QC4AdIBuAHTAbwB1ALAAdUByAHWAcwB1wHQAdgA1AHZAdQB2gHYAdsB3AHcAeAB3QDkAd4A5AHfAOQB4AHkAeEB6AHiAewB4wDwAeQB8AHlAPQB5gH0AecB+AHoAfwB6QEAAuoBBALrAQgC7AEMAu0BEALuARQC7wEYAvAAHALxABwC8gEcAvMBIAL0ASQC9QAoAvYBKAL3ACwC+AAsAvkBLAL6ADAC+wEwAvwANAL9ADQC/gA0AiAACQAhAA4AIgAXACUAIAAnADEAKAA6ACkARwArAFQALABhAC0AagAuAHMALwB8ADAAiQAxAJYAMgCjADMAsAA0AL0ANQDKADYA1wA3AOQAOADxADkA/gA6AAsBOwAUATwAHQE9ACYBPgAvAT8AOAFAAEkBQQBOAUIAXwFDAGwBRAB5AUUAhgFGAJMBRwCgAUgArQFJALoBSgDDAUsA0AFMAN0BTQDqAU4A+wFPAAgCUAAVAlEAIgJSADMCUwBAAlIBKwdUAE0CUwFAB1UAWgJWAGcCVwB4AlgAjQJZAJ4CWgCvAlsAvAJcAMkCXQDWAl4A4wJgAOwCYQD1AmIAAgNjAA8DZAAcA2UAKQNmADYDZwBDA2gAUANpAF0DagBmA2sAcwNsAIADbQCNA24AmgNvAKcDcAC0A3EAwQNyAM4DcwDbA3QA6AN1APUDdgACBHcADwR4ABwEeQApBHoANgR7AEMEfABQBH0AWQR+AGYEoQBvBKsAeAS4AIUEuwCOBL8AmwTAAKwEwQC9BMIAzgTEAN8ExgDwBMgABQXJABYFygAnBcsAOAXMAEkFzQBWBc4AYwXPAHQF0gCFBdMAlgXUAKcFryUEANUAuAXWAMUF1wDSBdkA2wXaAOwF2wD9BdwADgbgAB8G4QAsBuIAOQbkAEYG5gBTBucAYAboAG0G6QB6BuoAhwbrAJQG7AChBu0ArgbuALsG7wDMBvIA3QbzAOoG9AD3BvYABAf5ABEH+wAeBwAAAAAAAAAQBgAAABADAQsBBQP/BQAAAwEBBQUHAAAABQ0BBQdzrUUIIULrnAEAAAACAQEFBAMAAAADDQEFBbS2bZtEAAAAAw0ABQSZbNu2FgAAAAYGAQkIDPMzDAMAAAACAwEOBB8AAAAEAQEKBg8AAAACAQEPBAMAAAAEDwADBIjMRERmJiIDBQsBBQdu77333ns7AAMLAQUGvm3btgEAAAAFCwEFB25jzJgxZnwABQsBBQdub4wZxns7AAULAQUHxBhjxN4fYwAFCwEF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");
         var font1 = fonts_load_custom_font_with_data(fontData);
         var font2 = fonts_get_system_font(FONT_KEY_GOTHIC_18);
-        var font3 = fonts_load_custom_font({height: 40, url:"https://github.com/pebble-examples/feature-custom-font/raw/master/resources/fonts/osp-din/OSP-DIN.ttf"});
+        //var font3 = fonts_load_custom_font({height: 40, url:"https://github.com/pebble-examples/feature-custom-font/raw/master/resources/fonts/osp-din/OSP-DIN.ttf"});  /// FIXME no longer works now that http://butkus.pebbledev.com/convert/font?url=.... is down required by transpiled.js:26:2504 - however not used by this demo :-)
 
         /* Font and colors */
         var FONT_SYSTEM_NAME=FONT_KEY_ROBOTO_BOLD_SUBSET_49;
@@ -387,7 +388,7 @@ for n in name_list:
         // Stormstrooper https://github.com/clach04/watchface_storm_trooper
         // https://github.com/clach04/watchface_storm_trooper/blob/vector_opaque/src/watch_config.h
         // Almost a copy/paste from watch_config.h with #define removed and assignment added
-        BG_IMAGE='https://raw.githubusercontent.com/clach04/watchface_storm_trooper/vector_opaque/resources/images/storm_trooper.png';
+        BG_IMAGE='https://raw.githubusercontent.com/clach04/watchface_storm_trooper/vector_opaque/resources/images/storm_trooper.png';  // FIXME no longer works now that http://butkus.pebbledev.com/convert/image?url=..... is down which transpiled.js:26:2504 relies on - this is REQUIRED for images, can NOT open local files
         IMAGE_RES_X=125
         IMAGE_RES_Y=132
         BG_IMAGE_GRECT=GRect(Math.floor((144 - IMAGE_RES_X) / 2), 35,  IMAGE_RES_X, IMAGE_RES_Y)
@@ -452,13 +453,16 @@ for n in name_list:
         {
             if (IMAGE_RES_X==0)
             {
+            0 / 0;
                 var js_image=new Image;
                 js_image.src=BG_IMAGE;
                 // onload?
                 IMAGE_RES_X=js_image.width;
                 IMAGE_RES_Y=js_image.height;
             }
-            var background_bitmap=gbitmap_create(BG_IMAGE);
+            //var background_bitmap=gbitmap_create(BG_IMAGE);
+            //var background_bitmap=gbitmap_create({dataURL: "local_data.json"});
+            var background_bitmap=gbitmap_create({dataURL: "storm_trooper_16colors_4bpp.json"});
         }
         else
         {
